@@ -1,12 +1,12 @@
 // @flow
 
-import React from 'react';
-import { Table, Button, Progress } from 'reactstrap';
+import React from "react";
+import { Table, Button, Progress } from "reactstrap";
 
 const CandidateRow = ({ name, votes, votePending, onClick }) => (
   <tr>
     <td>
-      <Button color="primary" disabled={votePending} onClick={onClick}>
+      <Button color="primary" disabled={votePending} onClick={() => {}}>
         {name}
       </Button>
     </td>
@@ -18,7 +18,7 @@ type votingTableProps = {
   candidateList: Array<string>,
   votes: { [name: string]: number },
   voteHandler: (name: string) => () => any,
-  votePending: boolean,
+  votePending: boolean
 };
 
 const VotingTable = (props: votingTableProps) => (

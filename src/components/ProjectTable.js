@@ -1,7 +1,17 @@
 // @flow
 
 import React from "react";
-import { Table, Button, Progress, Container } from "reactstrap";
+import {
+  Table,
+  Button,
+  Progress,
+  Container,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  FormText
+} from "reactstrap";
 import FlatButton from "material-ui/FlatButton";
 import { GridList, GridTile } from "material-ui/GridList";
 import IconButton from "material-ui/IconButton";
@@ -9,6 +19,7 @@ import Subheader from "material-ui/Subheader";
 import StarBorder from "material-ui/svg-icons/toggle/star-border";
 import { ProjectData } from "../utils/projects";
 import FeaturedProject from "../components/FeaturedProject.js";
+import LinearProgress from "material-ui/LinearProgress";
 // const styles = {
 //   root: {
 //     display: "flex",
@@ -48,7 +59,7 @@ const header = {
   fontStyle: "bold"
 };
 
-const ProjectRow = ({ title, description, source, url }) => (
+const ProjectRow = ({ title, description, source, url, progress, goal }) => (
   <tr style={style}>
     <td>
       <img src={url} />
@@ -56,46 +67,19 @@ const ProjectRow = ({ title, description, source, url }) => (
     <td>
       <b>{title}</b>
       <br />
+      <LinearProgress mode="determinate" value={progress / goal * 100} />
       {description}
     </td>
   </tr>
 );
 
-// type votingTableProps = {
-//   candidateList: Array<string>,
-//   votes: { [name: string]: number },
-//   voteHandler: (name: string) => () => any,
-//   votePending: boolean,
-// };
-
-/**
- * A simple example of a scrollable `GridList` containing a [Subheader](/#/components/subheader).
- */
 const ProjectTable = () => (
-  // <div style={styles.root}>
-  //   <GridList cellHeight={180} style={styles.gridList}>
-  //     <Subheader>December</Subheader>
-  //     {ProjectData.map(tile => (
-  //       <GridTile
-  //         key={tile.url}
-  //         title={tile.title}
-  //         actionIcon={
-  //           <IconButton>
-  //             <StarBorder color="white" />
-  //           </IconButton>
-  //         }
-  //       >
-  //         <img src={tile.url} />
-  //       </GridTile>
-  //     ))}
-  //   </GridList>
-  // </div>
   <Container>
     <br />
     <h1 style={h1}>Jumpstart</h1>
     <br />
     <br />
-    <h1 style={h2}>Featured Projects</h1>
+    <h1 style={h2}>Create Project</h1>
     <Table>
       <tbody>
         <tr>
@@ -103,14 +87,33 @@ const ProjectTable = () => (
             <FeaturedProject />
           </td>
           <td>
-            {ProjectData.map(project => (
-              <ProjectRow
-                url={project.url}
-                title={project.title}
-                description={project.description}
-                source={project.source}
-              />
-            ))}
+            <Form>
+              <FormGroup>
+                <Label for="Title">Title</Label>
+                <Input type="text" name="title" id="title" />
+              </FormGroup>
+              <FormGroup>
+                <Label for="director"> Director</Label>
+                <Input
+                  type="text"
+                  name="director"
+                  id="director"
+                  placeholder="Organization"
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label for="description">Description</Label>
+                <Input type="text" name="description" id="description" />
+              </FormGroup>
+              <FormGroup>
+                <Label for="url">Image URL</Label>
+                <Input type="text" name="url" id="url" />
+              </FormGroup>
+              <FormGroup>
+                <Label for="goal">Goal (ETH)</Label>
+                <Input type="number" name="goal" id="goal" placeholder="40.0" />
+              </FormGroup>
+            </Form>
           </td>
         </tr>
       </tbody>

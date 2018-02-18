@@ -10,7 +10,6 @@ import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 
 const Main = () => (
   <MuiThemeProvider>
-    <AppBar />
     <App />
   </MuiThemeProvider>
 );

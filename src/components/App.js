@@ -21,10 +21,28 @@ import fetchContracts from "../helpers/fetchContracts";
 import ElectionRegistry from "../helpers/ElectionRegistry";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import ProjectTable from "./ProjectTable";
+import ProjectPage from "./ProjectPage";
+import { Tabs, Tab } from "material-ui/Tabs";
+import AddProject from "./AddProject";
+import { BrowserRouter, Switch, withRouter } from "react-router-dom";
+import { Route } from "react-router";
+import Web3AuthWrapper from "./Web3AuthWrapper";
+import Account from "./Account";
+const styles = {
+  headline: {
+    fontSize: 24,
+    paddingTop: 16,
+    marginBottom: 12,
+    fontWeight: 400
+  }
+};
+
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      isProjectTable: true,
+      isProjectPage: false,
       accounts: []
     };
   }
@@ -44,7 +62,11 @@ class App extends React.Component {
   render() {
     return (
       <AragonApp publicUrl="/">
-        <ProjectTable />
+        <br />
+        <br />
+        <Container>
+          <ProjectTable />
+        </Container>
       </AragonApp>
     );
   }
