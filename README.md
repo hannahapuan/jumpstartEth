@@ -1,7 +1,20 @@
 # Quick Start
+1. Install truffle globally
 ```
-npm install
+npm install -g truffle
 ```
+2. Start ganache
+```
+npm run ganache
+```
+3. Open in new shell and migrate with truffle to find ganache and then start the app
+```
+npm run migrate
+```
+```
+npm start
+```
+4. app viewable at `http://localhost:3000`
 
 # Create React dApp -- Ethereum Starter app.
 
