@@ -1,6 +1,6 @@
 # Quick Start
 ```
-git clone git@github.com:hannahapuan/jumpstartEth.git
+git clone git@github.com:hannahapuan/jumpstartEth.git && cd jumpstartEth
 ```
 1. Install truffle globally
 ```
