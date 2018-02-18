@@ -39,12 +39,15 @@ class App extends React.Component {
   }
 
   async componentDidMount() {
-    window.web3 = web3;
-    const web3client = new Web3Client(web3);
-    const accounts = await Promise.promisify(web3client.eth.getAccounts)();
-    this.setState({
-      accounts: accounts
-    });
+    if (typeof window.web3 !== 'undefined') {
+      console.log(typeof web3 )
+      console.log('injected web3 detected')
+      // console.log(web3.currentProvider)
+      const web3 = new Web3(window.web3.currentProvider)
+      const accounts = await Promise.promisify(web3.eth.getAccounts)()
+      console.log(accounts)
+      this.setState({ accounts })
+    }
   }
 
   render() {
@@ -52,7 +55,7 @@ class App extends React.Component {
       <MuiThemeProvider muiTheme={muiTheme}>
         <AragonApp publicUrl="/">
           hihihi{" "}
-          {/* {this.state.accounts ? this.state.accounts[0] : "not rendering"} */}
+          {this.state.accounts ? this.state.accounts[0] : "not rendering"}
         </AragonApp>
       </MuiThemeProvider>
     );
