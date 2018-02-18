@@ -1,0 +1,92 @@
+{
+  "development": {
+    "networkName": "development",
+    "networkLocation": {
+      "host": "127.0.0.1",
+      "port": 8545,
+      "network_id": "15"
+    },
+    "contractName": "Migrations",
+    "abi": [
+      {
+        "constant": false,
+        "inputs": [],
+        "name": "kill",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "last_completed_migration",
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "owner",
+        "outputs": [
+          {
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "completed",
+            "type": "uint256"
+          }
+        ],
+        "name": "setCompleted",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "new_address",
+            "type": "address"
+          }
+        ],
+        "name": "upgrade",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      }
+    ],
+    "compiler": {
+      "name": "solc",
+      "version": "0.4.19+commit.c4cbbb05.Emscripten.clang"
+    },
+    "schemaVersion": "1.0.1",
+    "updatedAt": "2018-02-18T07:37:56.456Z",
+    "address": "0xbdcb73ab5a49ad758dbad2cab89021ad0fde28de",
+    "network_id": "15"
+  }
+}
