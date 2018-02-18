@@ -6,13 +6,11 @@ import AppBar from "material-ui/AppBar";
 import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
 import "bootstrap/dist/css/bootstrap.css";
-import darkBaseTheme from "material-ui/styles/baseThemes/darkBaseTheme";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import getMuiTheme from "material-ui/styles/getMuiTheme";
 
 const Main = () => (
-  <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
-    <AppBar title="Jumpstart" />
+  <MuiThemeProvider>
+    <AppBar />
     <App />
   </MuiThemeProvider>
 );

@@ -45,7 +45,6 @@ class App extends React.Component {
     return (
       <AragonApp publicUrl="/">
         <ProjectTable />
-        hihihi {this.state.accounts ? this.state.accounts[0] : "not rendering"}
       </AragonApp>
     );
   }
