@@ -8,6 +8,8 @@ git clone git@github.com:hannahapuan/jumpstartEth.git
 npm install -g truffle
 ```
 Issues? [Go Here](https://docs.npmjs.com/getting-started/installing-npm-packages-globally)
+
+
 2. Start ganache
 ```
 npm run ganache
