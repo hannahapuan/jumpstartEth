@@ -40,12 +40,8 @@ class App extends React.Component {
 
   async componentDidMount() {
     if (typeof window.web3 !== 'undefined') {
-      console.log(typeof web3 )
-      console.log('injected web3 detected')
-      // console.log(web3.currentProvider)
       const web3 = new Web3(window.web3.currentProvider)
       const accounts = await Promise.promisify(web3.eth.getAccounts)()
-      console.log(accounts)
       this.setState({ accounts })
     }
   }
