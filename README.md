@@ -14,7 +14,7 @@ Issues? [Go Here](https://docs.npmjs.com/getting-started/installing-npm-packages
 ```
 npm run ganache
 ```
-3. Open in new shell and migrate with truffle to find ganache and then start the app
+3. Open in new shell and migrate then start the app
 ```
 npm run migrate
 ```
