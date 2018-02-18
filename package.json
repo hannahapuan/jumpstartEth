@@ -8,16 +8,20 @@
     "jquery and popper.js are only added to prevent reactstrap from whining during npm/yarn installs"
   ],
   "dependencies": {
+    "@aragon/client": "^1.0.0-beta.2",
+    "@aragon/ui": "^0.5.0",
     "bluebird": "^3.5.1",
     "bootstrap": "^4.0.0",
     "ganache-cli": "^6.0.3",
     "lodash": "^4.17.5",
+    "material-ui": "^0.20.0",
     "mkdirp": "^0.5.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "1.1.1",
     "reactstrap": "5.0.0-beta",
     "solc": "^0.4.19",
+    "styled-components": "^3.1.6",
     "truffle-privatekey-provider": "^0.0.4",
     "web3": "^0.20.4"
   },

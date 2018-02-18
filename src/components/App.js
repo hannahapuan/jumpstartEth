@@ -1,65 +1,65 @@
 // @flow
 
-import React from 'react';
-import { Container } from 'reactstrap';
-import VotingTable from './VotingTable';
-import fetchContracts from '../helpers/fetchContracts';
-import Voting from '../helpers/Voting';
-import reactLogo from '../reactLogo.svg';
-import ethereumLogo from '../ethereumLogo.svg';
-import './App.css';
+import React from "react";
+import ReactDOM from "react-dom";
+import { AragonApp } from "@aragon/ui";
+import "bootstrap/dist/css/bootstrap.css";
+import { darkBlack } from "material-ui/styles/colors";
+import { Container } from "reactstrap";
 
+import spacing from "material-ui/styles/spacing";
+import getMuiTheme from "material-ui/styles/getMuiTheme";
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import * as serviceWorker from "../serviceWorker";
+import Voting from "../helpers/Voting";
+import Web3 from "web3";
+import Promise from "bluebird";
+import getWeb3 from "../helpers/getWeb3";
+import "./App.css";
+import Web3Client from "../helpers/Web3Client";
+import fetchContracts from "../helpers/fetchContracts";
+import ElectionRegistry from "../helpers/ElectionRegistry";
+
+const muiTheme = getMuiTheme({
+  palette: {
+    primary1Color: "rgb(0, 40, 104)",
+    canvasColor: darkBlack,
+    textColor: darkBlack
+  },
+  appBar: {
+    height: 50
+  }
+});
 class App extends React.Component {
-  state: {
-    votePending: boolean,
-    votes: any,
-    poll: any,
-  };
-
-  constructor(props: { network: string }) {
+  constructor(props) {
     super(props);
     this.state = {
-      votePending: false,
-      votes: null,
-      poll: null,
+      accounts: []
     };
   }
 
-  async componentDidMount(): any {
-    const { contracts } = await fetchContracts(this.props.network, ['Voting']);
-    const poll = new Voting(contracts.Voting);
-    await poll.initCandidateList();
-    const votes = await poll.fetchCandidateVotes();
+  async componentDidMount() {
+    const { contracts, web3 } = await fetchContracts(this.props.network, [
+      "Voting",
+      "ElectionRegistry"
+    ]);
+    window.web3 = web3;
+    const web3client = new Web3Client(web3);
+    const accounts = await Promise.promisify(web3client.getAccounts)();
     this.setState({
-      votes,
-      poll,
+      accounts: accounts
     });
   }
 
-  voteHandler = (name: string) => async () => {
-    this.setState({ votePending: true });
-    const votes = await this.state.poll.voteForCandidate(name);
-    this.setState({ votes, votePending: false });
-  };
-
   render() {
     return (
-      <Container>
-        <h1>
-          <img src={reactLogo} alt="reactLogo" /> React, meet Ethereum{' '}
-          <img src={ethereumLogo} alt="reactLogo" />{' '}
-        </h1>
-        {this.state.votes ? (
-          <VotingTable
-            candidateList={this.state.poll.candidateList}
-            votes={this.state.votes}
-            voteHandler={this.voteHandler}
-            votePending={this.state.votePending}
-          />
-        ) : null}
-      </Container>
+      <MuiThemeProvider muiTheme={muiTheme}>
+        <AragonApp publicUrl="/">
+          hihihi{" "}
+          {/* {this.state.accounts ? this.state.accounts[0] : "not rendering"} */}
+        </AragonApp>
+      </MuiThemeProvider>
     );
   }
 }
-
 export default App;

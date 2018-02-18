@@ -22,10 +22,6 @@ npm start
 ```
 4. app viewable at `http://localhost:3000`
 
-# Create React dApp -- Ethereum Starter app.
-
-This project was bootstrapped with the Ethereum Starter App [Create React dApp](https://github.com/mjhm/create-react-dapp), which leverages the latest [Create React App](./REACT.md) and layers a template for creating Ethereum dApps using [TruffleFramework](http://truffleframework.com/docs/) and [Web3](https://github.com/ethereum/wiki/wiki/JavaScript-API)
-
 # All available commands
 ```
 npm run ganache
@@ -66,3 +62,7 @@ npm run test
 ```
 npm run eject
 ```
+
+# Create React dApp -- Ethereum Starter app.
+
+This project was bootstrapped with the Ethereum Starter App [Create React dApp](https://github.com/mjhm/create-react-dapp), which leverages the latest [Create React App](./REACT.md) and layers a template for creating Ethereum dApps using [TruffleFramework](http://truffleframework.com/docs/) and [Web3](https://github.com/ethereum/wiki/wiki/JavaScript-API)

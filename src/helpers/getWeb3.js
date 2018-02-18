@@ -2,15 +2,15 @@
 
 // NOTE: All this will be much cleaner with web3 1.x and async/await patterns.
 
-import Web3 from 'web3';
+import Web3 from "web3";
 
-const checkAccounts = (localWeb3, callback) => {
+export const checkAccounts = (localWeb3, callback) => {
   localWeb3.eth.getAccounts((err, accounts) => {
     if (err) {
       return callback(err);
     }
     if (accounts.length === 0) {
-      return callback(new Error('No accounts, perhaps MetaMask is locked'));
+      return callback(new Error("No accounts, perhaps MetaMask is locked"));
     }
     return callback(null, accounts[0]);
   });
@@ -22,14 +22,14 @@ const checkNetworkId = (localWeb3, requestedNetId, callback) => {
       return callback(err);
     }
     if (requestedNetId.toString() !== actualNetId.toString()) {
-      let hint = 'Perhaps MetaMask is set to the wrong network.';
+      let hint = "Perhaps MetaMask is set to the wrong network.";
       if (+requestedNetId > 10000 && +requestedNetId > 10000) {
-        hint = 'Perhaps you need to redeploy your contracts.';
+        hint = "Perhaps you need to redeploy your contracts.";
       }
       return callback(
         new Error(
-          `The web app's netId (${requestedNetId}) doesn't match Web3's netId (${actualNetId}). ${hint}`,
-        ),
+          `The web app's netId (${requestedNetId}) doesn't match Web3's netId (${actualNetId}). ${hint}`
+        )
       );
     }
     return callback(null);
@@ -43,14 +43,14 @@ const resolver = (resolve, reject, networkLocation) => {
   if (networkLocation.host && networkLocation.port) {
     localWeb3 = new Web3(
       new Web3.providers.HttpProvider(
-        `http://${networkLocation.host}:${networkLocation.port}`,
-      ),
+        `http://${networkLocation.host}:${networkLocation.port}`
+      )
     );
-  } else if (typeof web3 === 'undefined') {
+  } else if (typeof web3 === "undefined") {
     return reject(
       new Error(
-        "web3 isn't defined, perhaps MetaMask is disabled or not installed",
-      ),
+        "web3 isn't defined, perhaps MetaMask is disabled or not installed"
+      )
     );
   } else {
     localWeb3 = new Web3(web3.currentProvider);
@@ -75,10 +75,10 @@ const getWeb3 = networkLocation => {
   // The resolver needs to be called after the DOM is ready to give MetaMask enough
   // time to inject "web3".
   return new Promise((resolve, reject) => {
-    if (document.readyState === 'complete') {
+    if (document.readyState === "complete") {
       resolver(resolve, reject, networkLocation);
     } else {
-      window.addEventListener('load', () => {
+      window.addEventListener("load", () => {
         resolver(resolve, reject, networkLocation);
       });
     }
