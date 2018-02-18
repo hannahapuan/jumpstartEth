@@ -39,13 +39,9 @@ class App extends React.Component {
   }
 
   async componentDidMount() {
-    const { contracts, web3 } = await fetchContracts(this.props.network, [
-      "Voting",
-      "ElectionRegistry"
-    ]);
     window.web3 = web3;
     const web3client = new Web3Client(web3);
-    const accounts = await Promise.promisify(web3client.getAccounts)();
+    const accounts = await Promise.promisify(web3client.eth.getAccounts)();
     this.setState({
       accounts: accounts
     });

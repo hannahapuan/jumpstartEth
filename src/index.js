@@ -7,7 +7,7 @@ import * as serviceWorker from "./serviceWorker";
 import "bootstrap/dist/css/bootstrap.css";
 
 const env = {
-  network: process.env.REACT_APP_ETH_NETWORK || "development" // Default to Ganache CLI
+  network: "development" // Default to Ganache CLI
 };
 
 ReactDOM.render(<App {...env} />, document.getElementById("root"));

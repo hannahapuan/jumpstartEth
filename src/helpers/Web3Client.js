@@ -16,6 +16,6 @@ export default class Web3Client {
   }
 
   getAccounts() {
-    return this.web3.eth.accounts;
+    return this.web3.eth.getAccounts;
   }
 }
