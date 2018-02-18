@@ -1,5 +1,4 @@
 # Quick Start
-0. clone repo locally
 ```
 git clone git@github.com:hannahapuan/jumpstartEth.git
 ```
